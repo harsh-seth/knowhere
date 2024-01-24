@@ -1,3 +1,10 @@
+---
+layout: post
+title:  Neurosymbolic Systems
+categories: [Deep Learning, AI, Concept]
+excerpt: A recent announcement about an AI which can solve difficult geometry problems introduced me to this fascinating branch of AI system architecture
+---
+
 ### In a nutshell
 The idea behind a neurosymbolic system is straightforward but truly ingenious.
 The basic architecture comprises of two subsystems - a neural network and a symbolic solver.
