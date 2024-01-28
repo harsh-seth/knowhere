@@ -2,7 +2,7 @@
 layout: post
 title:  Neurosymbolic Systems
 categories: [Deep Learning, AI, Concept]
-excerpt: A recent announcement about an AI which can solve difficult geometry problems introduced me to this fascinating branch of AI system architecture
+excerpt: A recent announcement about an AI system which can solve difficult geometry problems introduced me to this fascinating branch of AI system architecture
 ---
 
 ### In a nutshell
