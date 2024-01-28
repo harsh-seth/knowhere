@@ -1,5 +1,5 @@
 ## knowhere
-(future) Home for my notes and ramblings on things that i'm currently working on and/or thinking about
+Home for my notes and thoughts on things that i'm currently working on or am interested in
 
 ---
-Based off the [Reverie](https://github.com/amitmerchant1990/reverie) theme by [Amit Merchant](https://github.com/amitmerchant1990)
+Site theme is based off [Reverie](https://github.com/amitmerchant1990/reverie) by [Amit Merchant](https://github.com/amitmerchant1990).
