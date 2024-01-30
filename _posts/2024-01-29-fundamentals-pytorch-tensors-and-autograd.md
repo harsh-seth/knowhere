@@ -125,6 +125,7 @@ To preserve precalculated weights of `model`s (and get other evaluation time beh
 
 As for the memory savings, it can be achieved in two ways
 1. Unset `requires_grad` to `False` for all variables you don't need a gradient for
+
 ```python
 import torch
 
@@ -140,6 +141,7 @@ y.requires_grad # True
 ```
 
 2. Use PyTorch's no_grad
+
 ```python
 
 x = torch.tensor([1., 2., 3.], requires_grad=True)
