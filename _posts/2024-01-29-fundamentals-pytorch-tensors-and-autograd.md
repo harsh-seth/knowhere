@@ -124,7 +124,7 @@ When `backward` is called on a variable, gradients are calculated for all leaf t
 To preserve precalculated weights of `model`s (and get other evaluation time behaviours), the model needs to be put into evaluation mode. This can be done calling `model.eval()` before performing evaluation on it. This freezes the layers of the model, makes dropout layers deterministic and other behaviours which are essential to protect the trained model from being contaminated by evaluation data. When ready to train the model again, simply calling `model.train()` primes it for weight updates and probablistic behaviours.
 
 As for the memory savings, it can be achieved in two ways
-1. Unset `requires_grad` to `False` for all variables you don't need a gradient for
+- Unset `requires_grad` to `False` for all variables you don't need a gradient for
 
 ```python
 import torch
@@ -140,7 +140,7 @@ y = (x**2).sum()
 y.requires_grad # True
 ```
 
-2. Use PyTorch's no_grad
+- Use PyTorch's no_grad
 
 ```python
 
