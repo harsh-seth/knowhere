@@ -7,27 +7,35 @@ title: Posts Archive
 
 <div id="archives">
   <section id="archive">
-     <h3>Most Recent Posts</h3>
-      {%for post in site.posts %}
-      {% unless post.next %}
-      <ul class="this">
-          {% else %}
+     <h2 style="text-align:left;">Recent Posts</h2>
+      {% for post in site.posts %}
+        {% if post.next %}
+          {% comment %} 'next' refers to the next (newer) post {% endcomment %}
           {% capture month %}{{ post.date | date: '%B %Y' }}{% endcapture %}
-          {% capture nmonth %}{{ post.next.date | date: '%B %Y' }}{% endcapture %}
           {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
+          {% capture nmonth %}{{ post.next.date | date: '%B %Y' }}{% endcapture %}
           {% capture nyear %}{{ post.next.date | date: '%Y' }}{% endcapture %}
-          {% if year != nyear %}
-      </ul>
-      <h2 style="text-align:left;">{{ post.date | date: '%Y' }}</h2>
-      <ul class="past">
+          {% comment %} logical operations are eval'ed rtl {% endcomment %}
+          {% assign needs_new_section = year != nyear or year == nyear and month != nmonth%}
+          {% if needs_new_section %}
+            </ul>
+            {% if year != nyear %}
+              <h2 style="text-align:left;">{{ post.date | date: '%Y' }}</h2>
+            {% endif %}
+            {% if month != nmonth %}
+              <h3 style="text-align:left;">{{ post.date | date: '%B %Y' }}</h3>
+            {% endif %}
+            <ul class="past-posts">
           {% endif %}
-          {% if month != nmonth %}
-          <h3 style="text-align:left;">{{ post.date | date: '%B %Y' }}</h3>
-          {% endif %}
-          {% endunless %}
-          <p><b><a href="{{ site.baseurl }}{{ post.url }}">{% if post.title and post.title != "" %}{{post.title}}{% else %}{{post.excerpt |strip_html}}{%endif%}</a></b> - {% if post.date and post.date != "" %}{{ post.date | date: "%e %B %Y" }}{%endif%}</p>
-          {% endfor %}
-      </ul>
-    <h3>Oldest Posts</h3>
+        {% else %}
+          {% comment %} only the most recent post will trigger this condition {% endcomment %}
+          <ul class="recent-posts">
+        {% endif %}
+        <li class='archive-item'><b><a href="{{ site.baseurl }}{{ post.url }}">{% if post.title and post.title != "" %}{{post.title}}{% else %}{{post.excerpt |strip_html}}{%endif%}</a></b> - {% if post.date and post.date != "" %}{{ post.date | date: "%e %B %Y" }}{%endif%}</li>
+        {% assign listed_content = true %}
+      {% endfor %}
+      {% if listed_content %}
+        </ul>
+      {% endif %}
   </section>
 </div>
