@@ -1,13 +1,13 @@
 ---
 layout: page
 permalink: /notes/
-title: Notes
+title: Study Notes
 ---
 
 
 <div id="page--notes">
   <section id="notes">
-    <p class="Notes-description"><i>A collection of topical observations and insights</i></p>
+    <p class="Notes-description"><i>Key observations and insights from study sessions</i></p>
     {% for post in site.posts %}
       {% if post.tags contains "notes" %}
         <p><b><a href="{{ site.baseurl }}{{ post.url }}">{% if post.title and post.title != "" %}{{post.title}}{% else %}{{post.excerpt |strip_html}}{%endif%}</a></b> - {% if post.date and post.date != "" %}{{ post.date | date: "%e %B %Y" }}{%endif%}</p>
