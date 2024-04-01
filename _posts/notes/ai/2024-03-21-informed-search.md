@@ -39,19 +39,24 @@ excerpt: <todo>
 - Does not take into account actual distances
 
 
+#### Heuristics
+- Heuristics are an estimate of the cost till the goal node
+
+
 #### A* Search
 - `f(n) = g(n) + h(n)`, where `g(n)` is the actual cost to reach n from start node (via selected nodes so far) and `h(n)` is the estimated cost of the cheapest path from n to goal
 - "Avoid expanding paths which are already expensive"
     - Sum of subpaths traveled till now might have been cheaper than the proposed option
 
-
-#### Heuristics
-- Heuristics are an estimate of the cost till the goal node
-
 **Theorem**: If `h(n)` is admissible, then A* using Tree-Search is optimal
+
 *Proof*: 
 - Argument: Intermediary nodes on the optimal path will be checked first before the suboptimal goal
 - Specification: Tree-Search is required, cause Admissibility is a weak condition, and the algorithm may have to revisit nodes to find the optimal path.
+
+**Theorem**: If `h(n)` is consistent, then A* using Graph-Search is optimal
+
+*Proof*:  *todo*
 
 
 #### Misc
