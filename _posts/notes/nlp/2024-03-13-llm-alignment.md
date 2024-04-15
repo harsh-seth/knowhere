@@ -1,29 +1,42 @@
 ---
 layout: post
-title:  LLM Alignment & RLHF
+title:  LLM Alignment - RLHF & DPO
 categories: [NLP]
 tags: [notes]
-excerpt: RLHF is a powerful class of methods which can tweak an LLM's outputs to be more in line with desired preferences by generalizing from a subjective subset of human annotated samples.
+excerpt: RLHF is a powerful class of methods which can tweak an LLM's outputs to be more in line with desired preferences by generalizing from a subjective subset of human annotated samples. DPO is a recent technique which achieves more than what RLHF can, in a fraction of the resources.
 ---
 
 ### In a nutshell
-- 3 Step process
+- Alignment requires making the preferred answer more likely and making all unwanted answers less likely. Finetuning only boosts the likelihood of the preferred response.
+
+- 3 Step process for RHLF
 
 1. Instruction Tuning
   - Start with Base Pretrained LM
-  - Generate (instruction, input, output) dataset
+  - Create (instruction, input, output) dataset
   - Use instruction tuning to finetune the base LM to get a SFT LM
 
 2. Reward Modeling
   - Start with SFT LM
-  - Generate (x, y_1, y_2) and have humans label y_1, y_2 as "better" or "worse"
+  - Model generates (x, y_1, y_2) dataset and have experts label y_1, y_2 as "better" or "worse"
   - Use the Bradley-Terry loss function to finetune a copy of SFT LM to get a Reward Model
 
 3. RL w/ Policy Grading
   - Start with SFT LM and the Reward Model
-  - Use PPO to finetune a copy of SFT LM by maximising expected rewards (rewards determined by the Reward Model) to get a RLHF aligned model
+  - Use PPO to finetune a copy of SFT LM by maximising expected rewards (rewards determined by the Reward Model) to get a RLHF aligned model, which requires rollouts from the policy
   - Caveat: We don't want the aligned model to deviate too much from the base model (and forget useful things like instructions) so we use a KL Divergence to keep overall changes under check
 
+- 2 Step process for DPO
+
+1. Instruction Tuning
+  - Start with Base Pretrained LM
+  - Create (instruction, input, output) dataset
+  - Use instruction tuning to finetune the base LM to get a SFT LM
+
+2. Direct Preference Optimization
+  - Start with SFT LM
+  - Model generates (x, y_1, y_2) dataset and have experts label y_1, y_2 as "better" or "worse"
+  - Use the DPO loss function to finetune a copy of the SFT LM to get the DPO LM
 
 ### Key Ideas
 #### Alignment
@@ -56,6 +69,10 @@ Why not RLHF:
 - Expensive to collect human annotations
 - Model loses out on creativity
 
+Caveats:
+- Reward model needs to be very carefully trained, to prevent it from learning shortcuts
+  - e.g. longer answers are better
+
 - Detailed Steps
   1. Instruction Tuning (SFT): Start with a large pretrained instruction tuned LLM
   2. Have a human rank a set of sampled results for a query from the LLM
@@ -85,8 +102,9 @@ Why not RLHF:
   - cons: Not learning from the negative/lower reward options
 
 - Use RL to increase `p(y_W | x)` and decrease `p(y_L | x)` by small amounts
+  - Needed when there are some non-differentiable aspects of the loss function. In this case, it the fact that there are multiple `y`s for a single `x` and sampling is non-differentiable
   - pros: Learning from all types of responses
-  - cons: ?
+  - cons: Difficult for long outputs, so cannot determine what part is incorrect + Reward model can learn incorrect behaviours.
 
 - Steps (contd.)
  7. Create a copy of the SFT model to be a policy model - `Pi`. The base SFT model can be referred to as `Pi_ref` and it will be a reference model.
@@ -97,8 +115,32 @@ Why not RLHF:
 9. Optimize with the PPO/REINFORCE/any policy grading algorithm
 
 
+### Direct Preference Optimization (DPO)
+- Removes the need for an explict reward model
+- Does not sample outputs `y|x` from the SFT model for the RL step
+
+- `loss_DPO(pi_theta, pi_ref) = - E_{x, y_W, y_L} log sigmoid(beta*(log(pi_theta*(y_W|x)/pi_ref(y_W|x)) - log(pi_theta*(y_L|x)/pi_ref(y_L|x))))`
+
+Steps
+1. Introduce a policy `pi*` which merges `pi_ref` with rewards. 
+  - `pi*(y|x) = (pi_ref(y|x)exp(r(x, y)/beta))/sum_y(pi_ref(y|x)exp(r(x, y)/beta))`
+  - `sum_y(pi_ref(y|x)exp(r(x, y)/beta)` becomes `Z(x)` and is termed as the normalizer/partition function and is over all `y` for `x`
+2. Rewrite the Bradley-Terry loss fn to become a min version and substitute `Z(x)` in it
+  - `loss = min_pi E_{x, y} log(Z(x)(pi(y|x)/pi_ref(y|x)exp(r(x,y)/beta)) - log Z)`
+  - Which simplifies (with `pi*`) to become `loss = min_pi E_{x, y} log(pi(y|x)/pi*(y|x)) - log Z`
+  - The first term is essentially a KL Divergence, and it can be minimized (i.e `loss = -log Z`) when `pi(y|x) = pi*(y|x) = pi_ref(y|x)exp(r(x, y)/beta)/Z(x)`, which gives us `r(x,y) = beta * (log(pi*(y|x)/pi_ref(y|x)) + log z)`
+3. Since `log(z)` is intractable, we put `r(y|x)` back into the Bradley Terry preference model and make a loss function out of it
+  - `p(y_W > y_L |x) = sigmoid(beta*(log(pi*(y_W|x)/pi_ref(y_W|x)) - log(pi*(y_L|x)/pi_ref(y_L|x))))`
+  - `loss_DPO(pi_theta, pi_ref) = - E_{x, y_W, y_L} log sigmoid(beta*(log(pi_theta*(y_W|x)/pi_ref(y_W|x)) - log(pi_theta*(y_L|x)/pi_ref(y_L|x))))`
+  - It has no reward function in it!
+  - It has no need for sampling! Can just work off human annotations
+
+
 #### Misc
 - Meta's LlaMA-2 (Language) is unaligned! The Chat model has guardrails in place.
+- MT Bench performs automatic evaluation of generated text for several standardized prompts and provides an score for each response, judged by a strong LLM (LLM-as-a-judge paradigm)
 
 ### Resources
-- [Mohit Iyyer's UMass CS685 S24 Lecture 11](https://www.youtube.com/watch?v=Iw2gHYRF_TA)
+- Dr. Mohit Iyyer's UMass CS685 S24 [Lecture 11](https://www.youtube.com/watch?v=Iw2gHYRF_TA)
+- Dr. Mohit Iyyer's UMass CS685 S24 [Lecture 12](https://www.youtube.com/watch?v=2dUSoco8r3U)
+- Direct Preference Optimization [paper](https://arxiv.org/abs/2305.18290)
