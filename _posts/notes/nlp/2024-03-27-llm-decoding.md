@@ -2,7 +2,7 @@
 layout: post
 title:  Multi Token Generation
 categories: []
-tags: [wip, notes]
+tags: [notes]
 excerpt: A 'bad' but more likely decision early on will prevent desired and more likely sequences from being generated. Some strategies to address this are discussed
 ---
 

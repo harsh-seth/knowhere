@@ -3,10 +3,8 @@ layout: post
 title:  Informed Search and Heuristics 
 categories: [AI]
 tags: [notes]
-excerpt: <todo>
+excerpt: Any search algorithm is only as good as the information it acts on. Heuristics allow raising the lower bound of a search problem, leading to better performance
 ---
-
-### In a nutshell
 
 ### Key Ideas
 - Exploit additional information about the problem domain itself to find more "promising" nodes
@@ -64,5 +62,3 @@ excerpt: <todo>
 - Heuristics point to the closest goal
 - Tree Search: Every node will be added to the frontier, regardless of whether it's been **explored** yet
 - Graph Search: Only unexplored nodes will be added to the frontier.
-
-### Resources

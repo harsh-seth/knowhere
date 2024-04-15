@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  AI - Bathroom cleaning
+title:  Partial Information Games - Bayes Nash Equilibriums
 categories: [Artificial Intelligence]
 tags: [notes]
 excerpt: <todo>

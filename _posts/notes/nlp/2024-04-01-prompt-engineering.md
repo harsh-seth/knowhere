@@ -1,23 +1,22 @@
 ---
 layout: post
 title:  Prompt Engineering and Evaluation
-categories: [Natural Language Processing]
+categories: [NLP]
 tags: [notes]
-excerpt: <todo>
+excerpt: Users of LLMs have found that providing examples and encouraging the LLM to explain its reasoning has lead to more relevant (and often often more accurate) outputs
 ---
 
-### In a nutshell
-
 ### Key Ideas
+
 
 ### Notes
 #### Prompting Techniques
 **Zero Shot Prompting**
-- No examples
+- Provide no examples along with actual prompt
 
 **Few Shot Prompting**
 - Give an example prompt and response
-- Give actual prefix after this
+- Give actual prompt after this
 - Optional instructions linking demonstration and actual question
 - Will not work for non-instruction tuned models
 
@@ -44,10 +43,6 @@ excerpt: <todo>
 **Chain of Thought Prompting**
 - "Question: ___. Answer: Let's think step by step"
 - Do not give final answer directly. Give the intermediate steps too
-
-
-**CoT + Few Shot**
-- 
 
 #### Misc
 - Negative examples (Fundamental negatives): Can find some success, but often difficult for the model to enforce them
