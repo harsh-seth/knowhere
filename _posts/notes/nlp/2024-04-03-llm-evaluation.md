@@ -95,10 +95,6 @@ Challenges when using humans
 2. Verify each claim with an LLM + an evidence source
 3. Calculate the retrieval score
 
-#### Misc
-
-#### Needs Exploration
-
 ### Resources
 - Dr. Mohit Iyyer's UMass CS685 S24 [Lecture #15](https://www.youtube.com/watch?v=Um9gf-U0o1Q)
 - [Chatbot Arena](chat.lmsys.org)
