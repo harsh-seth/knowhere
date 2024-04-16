@@ -2,7 +2,7 @@
 layout: post
 title:  <todo>
 categories: []
-tags: [wip, notes]
+tags: [notes, wip]
 excerpt: <todo>
 ---
 
