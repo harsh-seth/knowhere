@@ -11,6 +11,7 @@ excerpt: A summary of the spirit and key ideas of the Massachusetts Class D (pas
 ### Notes
 #### Safety
 **General**
+- Driving is a privilege, not a right.
 - Drive Defensively. Assume the worst of conditions and worst of behaviors
 - Follow the 3 Second Rule when keeping distance between other vehicles
     - Extend duration to 4 seconds for motorcycles and heavy load vehicles
@@ -73,6 +74,35 @@ excerpt: A summary of the spirit and key ideas of the Massachusetts Class D (pas
     - Electronic devices can be used in a handsfree mode while driving.
     - Motorists can listen to audio through one earplug connected to a cellphone
 - Motorists cannot send or receive messages while driving
+
+**Civil Violations**
+- Civil Motor Vehicle Infractions (CMVI) can cause you to lose driving privileges
+- 50% at fault cases can cause you to lose driving privileges
+    - Determined by your Insurance Company, if (i) You violate any one of the 19 Standards of Fault AND (ii) the company had to pay at least $1000 for damages
+- Recipients of a CMVI get 20 days to pay the fine or to dispute the charge
+    - Disputes cost $25
+    - Paying the fine also means accepting responsibility for the violation
+- Speeding is a Civil Violation
+    - Fine is $105 for the first 10 mph over limit, followed by $10 for every subsequent mph
+    - Fines are doubled in work zones
+
+**Criminal Violations**
+- Criminal Violations can cause you to lose driving privileges
+- Leaving the scene of a crime is a **major** criminal violation!
+- Operating under Influence (OUI) is a **major** criminal violation
+    - No open containers of alcoholic beverages are allowed in a vehicle while it is operating
+    - Even prescription medicines which may impair the senses are prohibited
+    - Drivers must consent to breathalyzer, blood tests or sobriety tests
+- Refusing to provide authorities your Name, Address, the Name and Address of the Owner of the vehicle, your License, the vehicle's Registration papers and your Signature is also a criminal violation
+
+**Out of State Violations**
+- Treated the same as MA violations, at the severity determined by MA traffic law
+- Penalties are also imposed by MA (on top of OOS penalties)
+
+**Repeat Offenses**
+- Accruing 3 speeding violations in 1 year will lead a suspension
+- Accruing 3 violations in 2 years will lead to a suspension
+- Accruing 7 violations in 3 years will lead to a suspension
 
 #### Misc
 **Glossary**
