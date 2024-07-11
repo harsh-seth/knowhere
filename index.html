@@ -2,6 +2,23 @@
 layout: default
 ---
 
+{% if paginator.page == 1 %}
+<div class="featured">
+  <h4 class="featured__title">Featured Posts</h3>
+  {% for post in site.posts %}
+    {% if post.tags contains "featured" %}
+      <div class="feature">
+        <a href="{{ site.baseurl }}{{ post.url }}">
+          <img src="{{ site.baseurl }}{{ post.highlight_img }}" class="feature__img" />
+          {{ post.title }}
+        </a>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+<hr />
+{% endif %}
+
 <div class="posts">
   {% for post in paginator.posts %}
     {% unless post.tags contains "wip" %}

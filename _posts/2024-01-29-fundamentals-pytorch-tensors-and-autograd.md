@@ -2,6 +2,8 @@
 layout: post
 title:  Fundamentals - PyTorch (Tensors and Autograd)
 categories: [Concept, Deep Learning, Code]
+tags: [featured]
+highlight_img: /images/code.svg
 excerpt: An exploration of some of the most important features of PyTorch which make it such a valuable tool to create neural networks and perform deep learning operations
 ---
 

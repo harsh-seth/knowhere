@@ -2,7 +2,8 @@
 layout: post
 title:  LLM Alignment - RLHF & DPO
 categories: [NLP]
-tags: [notes]
+tags: [notes, featured]
+highlight_img: /images/gear.svg
 excerpt: RLHF is a powerful class of methods which can tweak an LLM's outputs to be more in line with desired preferences by generalizing from a subjective subset of human annotated samples. DPO is a recent technique which achieves more than what RLHF can, in a fraction of the resources.
 ---
 
