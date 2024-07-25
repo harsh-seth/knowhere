@@ -42,3 +42,11 @@ Decision:
 > - Trees -> Heap -> Priority Queue
 
 Each data structure should allow for the following operations: `Search`, `Insert`, `Update`, `Delete`, `Sort` (if applicable)
+
+
+## Initial Thoughts
+- A scripting language really allows for clarity in thought and lets the logic to shine though
+    - See my [solution](https://github.com/harsh-seth/code-katas/blob/main/leetcode/1768-merge-strings-alternatively/solution.py) (and the [community solution](https://github.com/harsh-seth/code-katas/blob/main/leetcode/1768-merge-strings-alternatively/community_solution.py)) for LC 1768 for an example
+- Switching between Python and Javascript can often cause "crossed wires"
+    - Accessing `arr[-1]` yields `undefined` in JS and the last element in Python
+    - Accessing `str[len(str)]` yields `undefined` in JS and an error in Python
