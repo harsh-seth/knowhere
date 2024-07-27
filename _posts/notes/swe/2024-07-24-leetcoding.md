@@ -41,7 +41,7 @@ Decision:
 > - Objects -> Trees, Graphs
 > - Trees -> Heap -> Priority Queue
 
-Each data structure should allow for the following operations: `Search`, `Insert`, `Update`, `Delete`, `Sort` (if applicable)
+Each data structure should allow for the following operations: `Access`, `Insert`, `Update`, `Delete`, `Sort` (if applicable)
 
 
 ## Initial Thoughts
@@ -50,3 +50,6 @@ Each data structure should allow for the following operations: `Search`, `Insert
 - Switching between Python and Javascript can often cause "crossed wires"
     - Accessing `arr[-1]` yields `undefined` in JS and the last element in Python
     - Accessing `str[len(str)]` yields `undefined` in JS and an error in Python
+- C++ and Java really bring with it a lot of syntax which detracts from the logic of the solution!
+- However, in the memory manipulation cases, C++ does not have any competition (in the selected 3), allowing for crystal clear expression!
+
