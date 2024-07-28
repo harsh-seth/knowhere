@@ -27,3 +27,9 @@ $defaultTransition: 0.2s;
     @content;
   }
 }
+
+@mixin except-mobile {
+  @media screen and (min-width: 640px) {
+    @content;
+  }
+}

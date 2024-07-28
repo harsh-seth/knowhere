@@ -277,6 +277,7 @@ p > img {
   padding: 1rem 0;
   border-bottom: 1px solid $lightGray;
   transition: $defaultTransition;
+  position: relative;
 
   @include mobile {
     text-align: center;
@@ -348,6 +349,11 @@ nav {
     margin-top: 9px;
     display: block;
     font-size: 16px;
+  }
+
+  @include except-mobile {
+    position: absolute;
+    right: 0.625rem;
   }
 
   a {
@@ -457,6 +463,10 @@ nav {
 .wrapper-main {
   padding-bottom: 134px;
   margin-top: 7.5rem;
+
+  @include mobile {
+    margin-top: 15rem;
+  }
 }
 
 .wrapper-footer {
