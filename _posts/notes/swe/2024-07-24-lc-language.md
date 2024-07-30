@@ -1,14 +1,15 @@
 ---
 layout: post
-title:  Preparing for Coding Interviews (A journey)
-categories: [blog]
+title:  Preparing for Coding Interviews (A journey) - Programming Language Selection
+categories: [blog, leetcoding]
 tags: []
-excerpt: Documenting the trials and tribulations (and learnings) on my perpetual quest to hone the (algorithmic) tools of my trade
+excerpt: Documenting the factors that goes into the selection of a programming language to write solutions in
 ---
 
-This post documents the learnings, challenges i encountered and the decisions i made on my journey to hone the (algorithmic) tools of my trade. It's partly a tool for me to arrange my thoughts on this, partly a resource for me to revisit every now and then, and partly to serve as a guide for anyone who might find it useful. For any Hiring Managers/TA Partners seeing this, drop me an [email](mailto: harshseth2006@gmail.com) if you like what you see!
+{% include about_this_series-lc.html %}
 
 ## Selecting a programming language
+
 | Factor | Rationale | Candidates |
 |--------|-----------|------------|
 | Proficiency in the language | Assessment time should not be spent second-guessing (or worse, debugging) syntax and language features. | Javascript, Python, Java, C++ |
@@ -22,29 +23,7 @@ Decision:
 - Only when required to directly manipulate memory, use C++ (or more ideally, Rust)
 
 
-## Fundamental Data Structures
-- Object
-- Arrays
-- Linked Lists
-- Hash Maps
-- Stacks
-- Queues
-- Priority Queues
-- Trees
-- Graphs
-- (Binary) Heaps
-
-> NOTE: It is possible to build all of these data structures from the first two in the list
-> - Arrays -> Stacks, Queues
-> - Objects -> Linked Lists -> Stacks, Queues
-> - Objects, Arrays -> Hash Maps
-> - Objects -> Trees, Graphs
-> - Trees -> Heap -> Priority Queue
-
-Each data structure should allow for the following operations: `Access`, `Insert`, `Update`, `Delete`, `Sort` (if applicable)
-
-
-## Initial Thoughts
+## Stray Thoughts
 - A scripting language really allows for clarity in thought and lets the logic to shine though
     - See my [solution](https://github.com/harsh-seth/code-katas/blob/main/leetcode/1768-merge-strings-alternatively/solution.py) (and the [community solution](https://github.com/harsh-seth/code-katas/blob/main/leetcode/1768-merge-strings-alternatively/community_solution.py)) for LC 1768 for an example
 - Switching between Python and Javascript can often cause "crossed wires"
@@ -52,4 +31,3 @@ Each data structure should allow for the following operations: `Access`, `Insert
     - Accessing `str[len(str)]` yields `undefined` in JS and an error in Python
 - C++ and Java really bring with it a lot of syntax which detracts from the logic of the solution!
 - However, in the memory manipulation cases, C++ does not have any competition (in the selected 3), allowing for crystal clear expression!
-
