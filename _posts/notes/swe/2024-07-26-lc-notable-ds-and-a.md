@@ -32,3 +32,7 @@ Each data structure should allow for the following operations: `Access`, `Insert
 
 ## Notable Algorithms
 - Longest Increasing Subsequence (LIS)
+- Knapsack Problem
+- Dijistra's Algorithm
+- A* Search
+

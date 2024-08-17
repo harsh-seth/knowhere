@@ -12,7 +12,7 @@ excerpt: Documenting the steps I follow when I think through solutions for a pro
 - Create a notes document to accompany the question
 - Select a language to solve the problem in, and write down the function prototype of the expected solution (to determine expected input and output formats)
 - Write tests/asserts which call the function to verify if the solution works (AKA Test driven development)
-    - Copy over provided test cases, think of some on your own
+    - Think of some on your own test cases before copying over the provided ones, and then think of some more after copying
     - Use this as an opportunity to clarify details about the problem from the interviewer
 - In the notes document, list down assumptions, approach ideas and observations
     - This helps condense thoughts into atomic, verifiable claims
